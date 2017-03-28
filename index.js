@@ -18,7 +18,7 @@ if(args.length > 0){
 	if(args[1] == "-s" && args[2] != null){
 		searchPostFix = args[2];
 	}
-	fs.readFile(path.resolve(__dirname, args[0]), function(err, data){
+	fs.readFile(path.resolve(process.cwd(), args[0]), function(err, data){
 		if (err) throw err;
 		lookin = data.toString().split("\n");
 		googleIt(lookin, 0);
@@ -30,6 +30,7 @@ if(args.length > 0){
 	console.log("Options:");
 	console.log("\t-s [search term] default: \"apush\"");
 	console.log("example: qsearcher vocab.txt -s \"history\"");
+	console.log("cwd: " + process.cwd());
 }
 
 function googleIt(lookin, term){

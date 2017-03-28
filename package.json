@@ -1,6 +1,6 @@
 {
   "name": "qsearcher",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Get certain vocab terms from Quizlet",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,6 @@
   "dependencies": {
     "cheerio": "^0.22.0",
     "google": "^2.1.0",
-    "request": "^2.81.0",
+    "request": "^2.81.0"
   }
 }
