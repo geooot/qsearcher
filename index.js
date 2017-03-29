@@ -34,7 +34,7 @@ if(args.length > 0){
 }
 
 function googleIt(lookin, term){
-	if(lookin.length == term)
+	if(lookin.length == term || lookin[term] == "")
 		return;
 	google(lookin[term] + " " + searchPostFix + " quizlet", function (err, res){
 		if (err != null && res == null){
