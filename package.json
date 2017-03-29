@@ -2,19 +2,19 @@
   "name": "qsearcher",
   "version": "1.0.3",
   "description": "Get certain vocab terms from Quizlet",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
     "qsearcher": "./index.js"
   },
-  "main" : "./index.js",
   "preferGlobal": "true",
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cheerio": "^0.22.0",
+    "colors": "^1.1.2",
     "google": "^2.1.0",
     "request": "^2.81.0"
   }

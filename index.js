@@ -9,11 +9,12 @@ var path = require('path');
 var request = require('request');
 var cheerio = require('cheerio');
 var URL = require('url');
+var colors = require('colors');
 var searchPostFix = "apush";
 var args = process.argv.slice(2);
 var obj = {};
 if(args.length > 0){
-	console.log("This may take a while...")
+	console.log("This may take a while...".yellow)
 	google.resultsPerPage = 5;
 	if(args[1] == "-s" && args[2] != null){
 		searchPostFix = args[2];
@@ -26,11 +27,11 @@ if(args.length > 0){
 	});
 
 } else {
-	console.log("Usage: qsearcher <file> [options]");
-	console.log("Options:");
-	console.log("\t-s [search term] default: \"apush\"");
-	console.log("example: qsearcher vocab.txt -s \"history\"");
-	console.log("cwd: " + process.cwd());
+	console.log("Usage: qsearcher <file> [options]".cyan);
+	console.log("Options:".cyan);
+	console.log("\t-s [search term] default: \"apush\"".cyan);
+	console.log("example: qsearcher vocab.txt -s \"history\"".cyan);
+	console.log("cwd: ".cyan + process.cwd().cyan +"".cyan);
 }
 
 function googleIt(lookin, term){
@@ -38,7 +39,7 @@ function googleIt(lookin, term){
 		return;
 	google(lookin[term] + " " + searchPostFix + " quizlet", function (err, res){
 		if (err != null && res == null){
-			console.log("Error searching google (Probably temperarly IP blocked)");
+			console.log("Error searching google (Probably temperarly IP blocked)".red);
 			process.exit(1);
 		}
 		for (var i = 0; i < res.links.length; ++i) {
@@ -55,11 +56,12 @@ function googleIt(lookin, term){
 								if($(this).text().toLowerCase().includes(lookin[term].toLowerCase())){
 									doit = true;
 									console.log("\n");
-									console.log((diditonce ? "(Related) ":"") + $(this).text());
+									console.log((diditonce ? "(Related) ".bold.magenta:"") + $(this).text().bold.cyan);
 									diditonce = true;
 								}
 							}else if(doit){
 								console.log($(this).text());
+								console.log((link.href).dim.underline);
 								doit = false;
 							}
 						})
