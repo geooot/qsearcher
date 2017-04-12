@@ -20,8 +20,13 @@ if(args.length > 0){
 		searchPostFix = args[2];
 	}
 	fs.readFile(path.resolve(process.cwd(), args[0]), function(err, data){
-		if (err) throw err;
-		lookin = data.toString().split("\n");
+		lookin = []
+		if (err){
+			console.log(("No file found: Using \"" + args[0] + "\" as the search term").yellow);
+			lookin = [args[0]];
+		}else{
+			lookin = data.toString().split("\n");
+		}		
 		googleIt(lookin, 0);
 		
 	});
@@ -42,6 +47,7 @@ function googleIt(lookin, term){
 			console.log("Error searching google (Probably temperarly IP blocked)".red);
 			process.exit(1);
 		}
+		var found = false;
 		for (var i = 0; i < res.links.length; ++i) {
 			var link = res.links[i];
 			var url = URL.parse(link.href);
@@ -58,6 +64,7 @@ function googleIt(lookin, term){
 									console.log("\n");
 									console.log((diditonce ? "(Related) ".bold.magenta:"") + $(this).text().bold.cyan);
 									diditonce = true;
+									found = true;
 								}
 							}else if(doit){
 								console.log($(this).text());
@@ -69,6 +76,8 @@ function googleIt(lookin, term){
 				});
 			}
 		}
+		if(!found)
+			console.log(("Couldn't find anything for: " + lookin[term]).yellow)
 		setTimeout(function(){
 			googleIt(lookin, term+1);
 		}, 2000);
