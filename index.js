@@ -44,7 +44,7 @@ function googleIt(lookin, term){
 		return;
 	google(lookin[term] + " " + searchPostFix + " quizlet", function (err, res){
 		if (err != null && res == null){
-			console.log("Error searching google (Probably temperarly IP blocked)".red);
+			console.log("Error searching google (Probably temporarily IP blocked)".red);
 			process.exit(1);
 		}
 		var found = false;
