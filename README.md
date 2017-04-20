@@ -16,7 +16,7 @@ npm install -g qsearcher
 
 ## Usage
 ```
-Usage: qsearcher <file> [options]
+Usage: qsearcher <file | searchTerm> [options]
 Options:
 	-s [search term] default: "apush"
 	-j print out results in JSON format
