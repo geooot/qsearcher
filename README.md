@@ -19,5 +19,6 @@ npm install -g qsearcher
 Usage: qsearcher <file> [options]
 Options:
 	-s [search term] default: "apush"
+	-j print out results in JSON format
 example: qsearcher vocab.txt -s "history"
 ```
