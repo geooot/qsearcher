@@ -1,4 +1,6 @@
 # qsearcher
+[[Source]](https://github.com/geooot/qsearcher)  [[Website]](https://geooot.com/qsearcher)
+
 Get vocab definitions from quizlet from an input file.
 <p align="center">
 	<a href="https://asciinema.org/a/9d2h61kxhb45by465ojzcgbl8"><img src="terminal.png" alt="qseacher video" /></a>
